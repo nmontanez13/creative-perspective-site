@@ -48,3 +48,9 @@ When Stripe is approved, paste the live checkout URL into `checkout`. When the T
 ## Founding Cohort constraints
 
 Do not add fake testimonials, fake urgency, crossed-out pricing, unsupported guarantees, fabricated results, or public student footage without the appropriate permission.
+
+
+## 2026-10-19 Checkout-ready update
+- Requirements gate now routes to Circle Founding Cohort checkout.
+- Creative Pilot Rating added to the main navigation and anchored on-page.
+- Circle handles payment, account creation, and onboarding questionnaire.

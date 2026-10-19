@@ -1,7 +1,7 @@
 // Add live URLs here as they become available.
 const SITE_LINKS={
-  checkout:'', // Stripe checkout URL
-  questionnaire:'', // Tally enrollment questionnaire URL
+  checkout:'https://creative-perspective.circle.so/checkout/founding-cohort', // Circle Founding Cohort checkout
+  questionnaire:'', // Questionnaire is handled inside Circle
   youtube:'https://www.youtube.com/@Perspective_htx',
   instagram:'https://www.instagram.com/perspective.tx/'
 };
@@ -64,7 +64,7 @@ if(assessmentPanel){
 
 
 // Requirements confirmation gate. The checkout CTA only activates after every requirement is checked
-// and a live Stripe checkout URL has been added above.
+// and the live Circle checkout URL is available above.
 const requirementsForm=document.querySelector('#requirements-form');
 const gateSubmit=document.querySelector('#gate-submit');
 if(requirementsForm&&gateSubmit){
@@ -77,8 +77,8 @@ if(requirementsForm&&gateSubmit){
     gateSubmit.setAttribute('aria-disabled',String(!(complete&&checkoutReady)));
     if(status){
       if(!complete) status.textContent='Complete every confirmation above to continue.';
-      else if(!checkoutReady) status.textContent='Requirements confirmed. Checkout is temporarily pending Stripe approval; this button will activate as soon as the payment link is added.';
-      else status.textContent='Requirements confirmed. Continue to secure your Founding Cohort seat.';
+      else if(!checkoutReady) status.textContent='Requirements confirmed. Enrollment checkout is temporarily unavailable.';
+      else status.textContent='Requirements confirmed. Continue to secure your Founding Cohort seat in Circle.';
     }
   };
   boxes.forEach(box=>box.addEventListener('change',updateGate));
