@@ -2,8 +2,8 @@
 const SITE_LINKS={
   checkout:'', // Stripe checkout URL
   questionnaire:'', // Tally enrollment questionnaire URL
-  youtube:'',
-  instagram:''
+  youtube:'https://www.youtube.com/@Perspective_htx',
+  instagram:'https://www.instagram.com/perspective.tx/'
 };
 
 document.querySelectorAll('[data-link-placeholder]').forEach(el=>{
