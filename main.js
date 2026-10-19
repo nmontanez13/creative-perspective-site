@@ -1,3 +1,18 @@
+// Add live URLs here as they become available.
+const SITE_LINKS={
+  checkout:'', // Stripe checkout URL
+  questionnaire:'', // Tally enrollment questionnaire URL
+  youtube:'',
+  instagram:''
+};
+
+document.querySelectorAll('[data-link-placeholder]').forEach(el=>{
+  const key=el.dataset.linkPlaceholder;
+  const url=SITE_LINKS[key];
+  if(url){ el.href=url; el.dataset.linkReady='1'; }
+  else if(key==='checkout'||key==='questionnaire'){ el.classList.add('is-disabled'); el.setAttribute('aria-disabled','true'); }
+});
+
 const nav=document.querySelector('.nav'),toggle=document.querySelector('.toggle');
 toggle&&toggle.addEventListener('click',()=>nav.classList.toggle('open'));
 document.querySelectorAll('.links a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
@@ -45,4 +60,28 @@ if(assessmentPanel){
     });
   },{threshold:.35});
   scoreObserver.observe(assessmentPanel);
+}
+
+
+// Requirements confirmation gate. The checkout CTA only activates after every requirement is checked
+// and a live Stripe checkout URL has been added above.
+const requirementsForm=document.querySelector('#requirements-form');
+const gateSubmit=document.querySelector('#gate-submit');
+if(requirementsForm&&gateSubmit){
+  const boxes=[...requirementsForm.querySelectorAll('input[type="checkbox"]')];
+  const status=document.querySelector('[data-checkout-status]');
+  const updateGate=()=>{
+    const complete=boxes.every(box=>box.checked);
+    const checkoutReady=Boolean(SITE_LINKS.checkout);
+    gateSubmit.classList.toggle('is-disabled',!(complete&&checkoutReady));
+    gateSubmit.setAttribute('aria-disabled',String(!(complete&&checkoutReady)));
+    if(status){
+      if(!complete) status.textContent='Complete every confirmation above to continue.';
+      else if(!checkoutReady) status.textContent='Requirements confirmed. Checkout is temporarily pending Stripe approval; this button will activate as soon as the payment link is added.';
+      else status.textContent='Requirements confirmed. Continue to secure your Founding Cohort seat.';
+    }
+  };
+  boxes.forEach(box=>box.addEventListener('change',updateGate));
+  gateSubmit.addEventListener('click',e=>{if(gateSubmit.classList.contains('is-disabled'))e.preventDefault()});
+  updateGate();
 }

@@ -12,3 +12,23 @@
   from = "/refund"
   to = "/refund-policy.html"
   status = 301
+
+[[redirects]]
+  from = "/privacy"
+  to = "/privacy-policy.html"
+  status = 301
+
+[[redirects]]
+  from = "/terms"
+  to = "/terms-and-conditions.html"
+  status = 301
+
+[[redirects]]
+  from = "/requirements"
+  to = "/requirements.html"
+  status = 200
+
+[[redirects]]
+  from = "/thank-you"
+  to = "/thank-you.html"
+  status = 200
