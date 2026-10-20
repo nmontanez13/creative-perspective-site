@@ -54,3 +54,10 @@ Do not add fake testimonials, fake urgency, crossed-out pricing, unsupported gua
 - Requirements gate now routes to Circle Founding Cohort checkout.
 - Creative Pilot Rating added to the main navigation and anchored on-page.
 - Circle handles payment, account creation, and onboarding questionnaire.
+
+
+## October 20 launch-ready updates
+- Embedded the 4-minute YouTube landing-page video: https://youtu.be/4bsxKBu0hgA
+- Header, hero, mid-page, and final CTAs now scroll to the pricing section.
+- The pricing-card CTA is the only main-page CTA that leaves the site and opens the Circle Founding Cohort checkout.
+- Circle checkout: https://creative-perspective.circle.so/checkout/founding-cohort
